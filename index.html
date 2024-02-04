@@ -11,7 +11,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/480d2553e7.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" rel="stylesheet" type="text/css" />
     <script src="script/jquery.min.js"></script>
     <script src="script/sweetalert.min.js"></script>
 </head>
@@ -22,13 +23,63 @@
             <div class="oferta-header">
                 <span>Queima de estoque: aproveite descontos de até 70% na nossa liquidação de verão!</span>
             </div>
-            <h1><img src="img/logo.png" alt="logo_iwendellStore"></h1>
+            <div class="container-logo">
+                <h1><img src="img/logo.png" alt="logo_iwendellStore"></h1>
+            </div>
+            <div class="menu">
+                <div class="container-menu-item">
+                    <i class="far fa-cart-shopping"></i>
+                    <div class="container-itens-cart">
+                        <span class="itens-cart">0</span>
+                    </div>
+                </div>
+                <div class="container-menu-item">
+                    <i class="far fa-bars menu-icon"></i>
+                    <div class="sub-menu">
+                        <ul>
+                            <li class="user-off" id="accessLogin"><i class="far fa-sign-in"></i>Login</li>
+                            <li class="user-off" id="accessNewAccount"><i class="far fa-user-plus"></i>Criar conta</li>
+                            <li class="user-on" id="accessMyAccount"><i class="far fa-user"></i>Minha conta</li>
+                            <li class="user-on" id="accessLogout"><i class="far fa-arrow-right-from-bracket"></i>Sair</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-
     </header>
     <main>
         <div class="conteudo">
 
+        </div>
+        <div class="container-formulario">
+            <div class="formulario">
+                <h2 class="titulo-formulario new-account">Criar uma nova conta</h2>
+                <h2 class="titulo-formulario new-login">Acessar conta</h2>
+                <form>
+                    <div class="input-container new-account">
+                        <label for="name">Nome:</label>
+                        <input type="text" name="name" id="name-input" placeholder="Ex: Beatriz Araujo">
+                    </div>
+                    <div class="input-container new-account">
+                        <label for="email">E-mail:</label>
+                        <input type="text" name="email" id="email-input" placeholder="Ex: email@email.com">
+                    </div>
+                    <div class="input-container">
+                        <label for="user">Usuário:</label>
+                        <input type="text" name="user" id="user-input" placeholder="beatriz2023">
+                    </div>
+                    <div class="input-container">
+                        <label for="password">Senha:</label>
+                        <input type="password" name="password" id="password-input" placeholder="Digite uma senha">
+                    </div>
+                    <div class="input-container new-account">
+                        <label for="password-confirm">Confirme a senha:</label>
+                        <input type="password" name="password-confirm" id="password-confirm-input" placeholder="Confirme sua senha">
+                    </div>
+                    <button class="button-form new-account" id="button-account">Criar conta</button>
+                    <button class="button-form new-login" id="button-submit">Login</button>
+                </form>
+            </div>
         </div>
 
     </main>
