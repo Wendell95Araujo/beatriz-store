@@ -47,20 +47,23 @@ $(".menu-icon").on("click", function () {
 
 $("#accessLogin").on("click", function () {
     $(".container-formulario").css("display", "block");
+    $("html").css("overflow-y", "hidden");
     accessForm = "new-login"
     showFormOptions();
-})
+});
 
 $("#accessNewAccount").on("click", function () {
     $(".container-formulario").css("display", "block");
+    $("html").css("overflow-y", "hidden");
     accessForm = "new-account"
     showFormOptions();
-})
+});
 
 $("#accessMyAccount").on("click", function () {
     
-})
+});
 
 $("#accessLogout").on("click", function () {
 
-})
+});
+
