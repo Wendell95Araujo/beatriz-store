@@ -4,17 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wendell Store</title>
-    <link rel="shortcut icon" href="img/logo-shortcut.png">
-    <link rel="stylesheet" href="style/reset.css">
-    <link rel="stylesheet" href="style/style.css">
+    <title>Minha conta</title>
+    <link rel="shortcut icon" href="../img/logo-shortcut.png">
+    <link rel="stylesheet" href="../style/reset.css">
+    <link rel="stylesheet" href="../style/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/480d2553e7.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" rel="stylesheet" type="text/css" />
-    <script src="script/jquery.min.js"></script>
-    <script src="script/sweetalert.min.js"></script>
+    <script src="../script/jquery.min.js"></script>
+    <script src="../script/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -24,10 +24,7 @@
                 <span>Queima de estoque: aproveite descontos de até 70% na nossa liquidação de verão!</span>
             </div>
             <div class="container-logo">
-                <h1><img src="img/logo.png" alt="logo_iwendellStore"></h1>
-            </div>
-            <div class="container-name">
-                <span class="nome-boas-vindas"></span>
+                <h1><img src="../img/logo.png" alt="logo_iwendellStore"></h1>
             </div>
             <div class="menu">
                 <div class="container-menu-item">
@@ -40,9 +37,6 @@
                     <i class="far fa-bars menu-icon"></i>
                     <div class="sub-menu">
                         <ul>
-                            <li class="user-off" id="accessLogin"><i class="far fa-sign-in"></i>Login</li>
-                            <li class="user-off" id="accessNewAccount"><i class="far fa-user-plus"></i>Criar conta</li>
-                            <li class="user-on" id="accessMyAccount"><i class="far fa-user"></i><a href="minha-conta/index.html">Minha conta</a></li>
                             <li class="user-on" id="accessLogout"><i class="far fa-arrow-right-from-bracket"></i>Sair</li>
                         </ul>
                     </div>
@@ -51,41 +45,8 @@
         </div>
     </header>
     <main>
+        <p class="page-select">minha-conta</p>
         <div class="conteudo">
-
-        </div>
-
-        <div class="container-formulario">
-            <div class="formulario">
-                <h2 class="titulo-formulario new-account">Criar uma nova conta</h2>
-                <h2 class="titulo-formulario new-login">Acessar conta</h2>
-                <form>
-                    <fieldset>
-                        <div class="input-container new-account">
-                            <label for="name">Nome:</label>
-                            <input type="text" name="name" id="name-input" placeholder="Ex: Beatriz Araujo">
-                        </div>
-                        <div class="input-container new-account">
-                            <label for="email">E-mail:</label>
-                            <input type="text" name="email" id="email-input" placeholder="Ex: email@email.com">
-                        </div>
-                        <div class="input-container">
-                            <label for="user">Usuário:</label>
-                            <input type="text" name="user" id="user-input" placeholder="beatriz2023">
-                        </div>
-                        <div class="input-container">
-                            <label for="password">Senha:</label>
-                            <input type="password" name="password" id="password-input" placeholder="Digite uma senha">
-                        </div>
-                        <div class="input-container new-account">
-                            <label for="password-confirm">Confirme a senha:</label>
-                            <input type="password" name="password-confirm" id="password-confirm-input" placeholder="Confirme sua senha">
-                        </div>
-                    </fieldset>
-                    <button type="button" class="button-form" id="button-cancel">Cancelar</button>
-                    <button type="submit" class="button-form" id="button-submit"></button>
-                </form>
-            </div>
         </div>
 
     </main>
@@ -97,7 +58,7 @@
                 <a href="#">Saiba mais</a>
                 <a href="#">Contato</a>
             </p>
-            <img src="img/logo-footer.png" alt="logo_iwendellStore">
+            <img src="../img/logo-footer.png" alt="logo_iwendellStore">
             <div class="footer-text-empresa">
                 <h3>Wendell Store</h3>
                 <p class="footer-empresa">
@@ -141,7 +102,7 @@
             <p>©Copyright Wendell Store ltda. Todos os direitos reservados.</p>
         </div>
     </footer>
-    <script type="text/javascript" src="script/script.js"></script>
+    <script type="text/javascript" src="../script/script.js"></script>
 </body>
 
 </html>
