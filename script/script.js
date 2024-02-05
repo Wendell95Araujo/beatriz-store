@@ -91,7 +91,7 @@ function createNewAccount() {
 
   name = titleCase(name);
 
-  if (usuarioSave.usuarios.user) {
+  if (usuarioSave !== null && usuarioSave.usuarios.user) {
     swal({
       title: "Erro!",
       text: "Usuário indisponível.",
@@ -182,7 +182,17 @@ function login() {
   var passwordInput = $("#password-input").val();
   var usuarios = JSON.parse(localStorage.getItem("usuarios"));
 
-  var usuarioLog = usuarios.usuarios[userInput]
+  var usuarioLog = '';
+  if (usuarios !== null) {
+    usuarioLog = usuarios.usuarios[userInput]
+  } else {
+    swal({
+      title: "Erro!",
+      text: "Usuário e/ou senha inválida.",
+      icon: "error",
+      button: "Tentar novamente",
+    });
+  }
 
   if (usuarioLog && usuarioLog.senha === passwordInput) {
     var nome = usuarioLog.nome;
