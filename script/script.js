@@ -1,9 +1,14 @@
 (function () {
   verificarLog();
   exibirNome();
+  carouselSlide();
 })();
 
-$(document).ready(function () {
+$(document).ready(function() {
+  carouselItens();
+})
+
+function carouselSlide() {
   var slids = $(".slider [type=radio]"); // busca os radios na div
   var slids_len = slids.length; // conta o número de radios
   var intervalo = 5; // intervalo em segundos
@@ -30,29 +35,35 @@ $(document).ready(function () {
       tempo = setInterval(rodar, intervalo * 1000); // reinicia o temporizador
     }
   );
+}
 
-  carroselItens();
-});
+var countCarousel = 0
 
-
-function carroselItens() {
+function carouselItens() {
   var itensInfo = $(".itens-info");
   var rand = function () {
     if ($(window).width() > 500) {
       return;
     } else {
-      var randNumber = Math.floor(Math.random() * itensInfo.length + 0);
+      if (countCarousel == itensInfo.length) {
+        countCarousel = 0
+      }
       itensInfo.each(function () {
         $(this).hide();
       });
-      $(itensInfo[randNumber]).show();
-      setTimeout(rand, 2000);
+      $(itensInfo[countCarousel]).show();
+      countCarousel++
+      setTimeout(rand, 3000);
     }
   };
-  rand();
+  if ($(window).width() < 500) {
+    rand();
+  } else {
+    itensInfo.show();
+  }
 }
 $(window).resize(function () {
-  carroselItens();
+  carouselItens();
 });
 
 var count = 0;
