@@ -142,9 +142,7 @@ function createNewAccount() {
       },
       closeOnClickOutside: false,
       closeOnEsc: false,
-    }).then((value) => {
-      switch (value) {
-        case "ok":
+    })
           $(".container-formulario").css("display", "block");
           accessForm = "new-login";
           showFormOptions();
@@ -196,6 +194,17 @@ $("#accessNewAccount").on("click", function () {
 
 $("#accessLogout").on("click", function () {
   localStorage.setItem("user-log", false);
+  swal({
+      text: "Você saiu!",
+      icon: "success",
+      buttons: false,
+      timer: 3000,
+      closeOnClickOutside: false,
+      closeOnEsc: false,
+    });
+  setTimeout(function() {
+  window.location.reload();
+}, "3000");
 });
 
 $("#button-submit").on("click", function (e) {
