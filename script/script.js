@@ -7,12 +7,13 @@ var count = 0;
 var accessForm = "";
 
 function titleCase(str) {
-  var splitStr = str.toLowerCase().split(' ');
+  var splitStr = str.toLowerCase().split(" ");
   for (var i = 0; i < splitStr.length; i++) {
-      splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+    splitStr[i] =
+      splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
   }
   // Directly return the joined string
-  return splitStr.join(' '); 
+  return splitStr.join(" ");
 }
 
 function verificarLog() {
@@ -20,10 +21,10 @@ function verificarLog() {
   var pageSelect = $(".page-select").text();
 
   if (logado !== null) {
-    if (logado === 'true') {
+    if (logado === "true") {
       $(".user-off").css("display", "none");
       $(".user-on").css("display", "block");
-      console.log("logado")
+      console.log("logado");
     } else {
       $(".user-off").css("display", "block");
       $(".user-on").css("display", "none");
@@ -41,12 +42,12 @@ function verificarLog() {
 function exibirNome() {
   var logado = localStorage.getItem("user-log");
   var nomeCompleto = localStorage.getItem("name");
-  var nome = ''
+  var nome = "";
   if (nomeCompleto !== null && nomeCompleto != undefined) {
-    nome = nomeCompleto.split(" ")[0]
+    nome = nomeCompleto.split(" ")[0];
   }
   if (logado !== null) {
-    if (logado === 'true') {
+    if (logado === "true") {
       $(".nome-boas-vindas").text(`Seja bem-vinda, ${nome}!`);
     }
   }
@@ -60,7 +61,7 @@ function showFormOptions() {
   } else if (accessForm === "new-account") {
     $(".new-login").css("display", "none");
     $(".new-account").css("display", "block");
-    $("#button-submit").text("Criar conta")
+    $("#button-submit").text("Criar conta");
   }
 }
 
@@ -68,7 +69,7 @@ function handleFormAction() {
   if (accessForm === "new-login") {
     login();
   } else if (accessForm === "new-account") {
-    createNewAccount()
+    createNewAccount();
   }
 }
 
@@ -138,15 +139,12 @@ function createNewAccount() {
       timer: 3000,
       closeOnClickOutside: false,
       closeOnEsc: false,
-    })
-    setTimeout(function() {
-         $(".container-formulario").css("display", "block");
-          accessForm = "new-login";
-          showFormOptions();
-}, "3000");
-          
-      }
     });
+    setTimeout(function () {
+      $(".container-formulario").css("display", "block");
+      accessForm = "new-login";
+      showFormOptions();
+    }, "3000");
   }
 }
 
@@ -194,16 +192,16 @@ $("#accessNewAccount").on("click", function () {
 $("#accessLogout").on("click", function () {
   localStorage.setItem("user-log", false);
   swal({
-      text: "Você saiu!",
-      icon: "success",
-      buttons: false,
-      timer: 3000,
-      closeOnClickOutside: false,
-      closeOnEsc: false,
-    });
-  setTimeout(function() {
-  window.location.reload();
-}, "3000");
+    text: "Você saiu!",
+    icon: "success",
+    buttons: false,
+    timer: 3000,
+    closeOnClickOutside: false,
+    closeOnEsc: false,
+  });
+  setTimeout(function () {
+    window.location.reload();
+  }, "3000");
 });
 
 $("#button-submit").on("click", function (e) {
