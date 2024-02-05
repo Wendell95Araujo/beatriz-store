@@ -97,10 +97,6 @@
   text-decoration: none;
 }
 
-.container-menu-item:hover .sub-menu {
-  display: block;
-}
-
 /*conteudo*/
 .conteudo {
   height: 800px;
