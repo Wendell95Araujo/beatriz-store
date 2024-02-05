@@ -1,3 +1,8 @@
+/*body*/
+body {
+  font-family: "roboto", "sans-serif";
+}
+
 /*header*/
 .caixa-header {
   background-color: white;
@@ -143,8 +148,13 @@
   margin: 40px auto;
 }
 
+.icon-label {
+  display: inline-block;
+  margin-right: 10px;
+}
+
 .input-container label {
-  display: block;
+  display: inline-block;
   margin-bottom: 10px;
   font-weight: bold;
   font-size: 25px;
@@ -157,6 +167,7 @@
   padding: 10px 20px;
   border: solid 3px black;
   border-radius: 20px;
+  text-align: center;
 }
 
 #name-input {
