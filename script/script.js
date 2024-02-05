@@ -41,11 +41,9 @@ function verificarLog() {
 function exibirNome() {
   var logado = localStorage.getItem("user-log");
   var nomeCompleto = localStorage.getItem("name");
-  var nome = nomeCompleto.split(" ")[0];
-  if (logado !== null) {
-     if (logado) {
-       $(".nome-boas-vindas").text(`Seja bem-vinda, ${nome}!`);
-     }
+  if (nomeCompleto !== null) var nome = nomeCompleto.split(" ")[0]
+  if (logado) {
+    $(".nome-boas-vindas").text(`Seja bem-vinda, ${nome}!`);
   }
 }
 
