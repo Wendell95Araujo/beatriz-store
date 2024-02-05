@@ -210,5 +210,5 @@ $("#button-submit").on("click", function (e) {
 });
 
 $("#button-cancel").on("click", function () {
-  $(".container-formulario").css("display", "none");
+  window.location.reload();
 });
