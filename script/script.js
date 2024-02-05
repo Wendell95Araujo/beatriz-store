@@ -3,6 +3,58 @@
   exibirNome();
 })();
 
+$(document).ready(function () {
+  var slids = $(".slider [type=radio]"); // busca os radios na div
+  var slids_len = slids.length; // conta o número de radios
+  var intervalo = 5; // intervalo em segundos
+
+  function rodar() {
+    var slids_ativo = $(".slider [type=radio]:checked")
+      .attr("id")
+      .match(/\d+/)[0]; // pega o valor numérico do id do radio checado
+
+    if (slids_ativo == slids_len) slids_ativo = 0; // se estiver no último slide, volta pro primeiro
+
+    slids.eq(slids_ativo).prop("checked", true); // checa o radio da vez
+  }
+
+  var tempo = setInterval(rodar, intervalo * 1000); // inicia o temporizador
+
+  $(".slider").hover(
+    function () {
+      // função quando entra o mouse
+      clearInterval(tempo); // cancela o temporizador
+    },
+    function () {
+      // função quando retira o mouse
+      tempo = setInterval(rodar, intervalo * 1000); // reinicia o temporizador
+    }
+  );
+
+  carroselItens();
+});
+
+
+function carroselItens() {
+  var itensInfo = $(".itens-info");
+  var rand = function () {
+    if ($(window).width() > 500) {
+      return;
+    } else {
+      var randNumber = Math.floor(Math.random() * itensInfo.length + 0);
+      itensInfo.each(function () {
+        $(this).hide();
+      });
+      $(itensInfo[randNumber]).show();
+      setTimeout(rand, 2000);
+    }
+  };
+  rand();
+}
+$(window).resize(function () {
+  carroselItens();
+});
+
 var count = 0;
 var accessForm = "";
 
@@ -47,7 +99,7 @@ function exibirNome() {
       var nomeCompleto = "";
       var nome = "";
 
-     var usuarioLog = usuarios.usuarios[userLogado];
+      var usuarioLog = usuarios.usuarios[userLogado];
 
       if (usuarioLog) {
         nomeCompleto = usuarioLog.nome;
@@ -182,9 +234,9 @@ function login() {
   var passwordInput = $("#password-input").val();
   var usuarios = JSON.parse(localStorage.getItem("usuarios"));
 
-  var usuarioLog = '';
+  var usuarioLog = "";
   if (usuarios !== null) {
-    usuarioLog = usuarios.usuarios[userInput]
+    usuarioLog = usuarios.usuarios[userInput];
   } else {
     swal({
       title: "Erro!",
