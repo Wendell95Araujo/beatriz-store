@@ -62,9 +62,6 @@ function carouselItens() {
     itensInfo.show();
   }
 }
-$(window).resize(function () {
-  carouselItens();
-});
 
 var count = 0;
 var accessForm = "";
