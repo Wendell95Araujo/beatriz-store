@@ -133,7 +133,7 @@ function createNewAccount() {
 
     swal({
       title: "Tudo certo!",
-      text: "Conta criada com sucesso! \n\n Faça login.",
+      text: "Conta criada com sucesso!",
       icon: "success",
       buttons: false,
       timer: 3000,
@@ -141,6 +141,8 @@ function createNewAccount() {
       closeOnEsc: false,
     });
     setTimeout(function () {
+      $("#user-input").val('');
+      $("#password-input").val('');
       $(".container-formulario").css("display", "block");
       accessForm = "new-login";
       showFormOptions();
