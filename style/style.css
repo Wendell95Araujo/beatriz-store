@@ -5,7 +5,7 @@ body {
 
 /*header*/
 .caixa-header {
-  background-color: lightpink;
+  background-color: lightskyblue;
 }
 
 .oferta-header {
@@ -38,6 +38,7 @@ body {
   right: 10px;
   top: 85px;
   font-size: 30px;
+  color: black;
 }
 
 .menu i {
@@ -71,7 +72,7 @@ body {
 
 .sub-menu {
   display: none;
-  background-color: black;
+  background-color: lightcoral;
   color: white;
   position: absolute;
   right: -5px;
@@ -89,8 +90,8 @@ body {
 }
 
 .sub-menu li:hover {
-  color: black;
-  background-color: gray;
+  color: lightcoral;
+  background-color: white;
 }
 
 .sub-menu li i {
@@ -122,7 +123,6 @@ body {
   display: block;
   width: 80%;
   margin: auto;
-  margin-top: 20px;
 }
 
 .slider li {
@@ -168,7 +168,7 @@ body {
 /*info site*/
 .info-site {
   width: 100%;
-  background-color: lightgray;
+  background-color: lavender;
   padding: 20px 0;
   text-align: center;
   display: flex;
@@ -197,7 +197,7 @@ body {
 
 /*fomrulário*/
 .container-formulario {
-  background-color: gray;
+  background-color: lightcoral;
   width: 100%;
   height: 100%;
   display: none;
@@ -218,17 +218,19 @@ body {
   border-radius: 30px;
   font-size: 22px;
   text-align: center;
-  background-color: gray;
+  background-color: lightcoral;
 }
 
 .titulo-formulario {
   font-size: 30px;
   font-weight: bold;
+  color: white;
 }
 
 .input-container {
   display: block;
   margin: 40px auto;
+  color: white;
 }
 
 .icon-label {
@@ -248,9 +250,22 @@ body {
   height: 25px;
   font-size: 20px;
   padding: 10px 20px;
-  border: solid 3px black;
+  border: solid 3px white;
   border-radius: 20px;
   text-align: center;
+  color: white;
+  background-color: lightcoral;
+}
+
+.input-container input::placeholder {
+  color: white;
+  opacity: 0.5;
+}
+
+.input-container input:focus-visible {
+  background-color: white;
+  color: lightcoral;
+  outline: none;
 }
 
 #name-input {
@@ -262,7 +277,8 @@ body {
   border-radius: 20px;
   font-size: 25px;
   padding: 10px 20px;
-  background-color: black;
+  background-color: lightcoral;
+  border: solid 3px white;
   color: white;
   cursor: pointer;
   width: 200px;
@@ -270,13 +286,13 @@ body {
 }
 
 .button-form:hover {
-  color: black;
+  color: lightcoral;
   background-color: white;
 }
 
 /*footer*/
 .footer-container {
-  background-color: deeppink;
+  background-color: lightcoral;
   width: 100%;
   text-align: left;
   padding: 30px 0;
@@ -302,7 +318,7 @@ body {
   display: inline-block;
 }
 .footer-container h3 {
-  color: black;
+  color: white;
   letter-spacing: 1px;
   font: italic 30px "Cookie", cursive;
   padding: 0px 0px 10px;
@@ -315,17 +331,17 @@ body {
 }
 /* Footer links */
 .footer-container .footer-p {
-  color: black;
+  color: white;
   margin: 20px 0 20px;
   transition: 0.5s all;
 }
 .footer-container .footer-p a {
   display: inline-block;
   text-decoration: none;
-  color: black;
+  color: white;
   margin: 0px 8px 0px 0px;
   padding-left: 3px;
-  border-left: 2px solid black;
+  border-left: 2px solid white;
 }
 .footer-container .footer-p a:hover {
   text-shadow: 0 0 10px #fff, 0 0 20px #fff;
@@ -337,7 +353,7 @@ body {
 }
 .footer-container .footer-content-2 i {
   background: white;
-  color: black;
+  color: lightcoral;
   font-size: 15px;
   width: 35px;
   height: 35px;
@@ -351,7 +367,7 @@ body {
   display: inline-block;
 }
 .footer-container .footer-content-2 p a {
-  color: black;
+  color: white;
   text-decoration: none;
 }
 /* Footer content-3 */
@@ -360,13 +376,13 @@ body {
 }
 .footer-container .footer-empresa {
   line-height: 22px;
-  color: black;
+  color: white;
   font-size: 14px;
   font-weight: 200;
 }
 .footer-container .footer-empresa span {
   display: block;
-  color: black;
+  color: white;
   font-size: 20px;
   font-weight: bolder;
   margin-bottom: 20px;
@@ -378,7 +394,7 @@ body {
   height: 35px;
   cursor: pointer;
   border-radius: 50%;
-  color: black;
+  color: white;
   text-align: center;
   padding: 5px;
   margin: 5px 5px 12px 12px;
@@ -399,7 +415,7 @@ body {
   color: #bd0d9f;
 }
 .footer-container .footer-content-3 p {
-  color: black;
+  color: white;
   font-size: 13px;
   padding: 10px;
 }
@@ -408,7 +424,7 @@ body {
 }
 .footer-container .copyright p {
   text-align: center;
-  color: black;
+  color: white;
   padding: 5px;
   font-size: 12px;
 }
@@ -438,8 +454,11 @@ body {
     width: 100%;
     text-align: center;
   }
-  .footer-container .footer-content-1 {
+  .footer-container .footer-content-1,
+  .footer-container .footer-content-2,
+  .footer-container .footer-empresa {
     margin-left: 0;
+    margin-bottom: 20px;
   }
   .footer-container .footer-content-2 i {
     margin-left: 0;
