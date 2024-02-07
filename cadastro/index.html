@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
     <link rel="shortcut icon" href="../img/logo-shortcut.png">
-    <link rel="stylesheet" href="../style/reset.css">
-    <link rel="stylesheet" href="../style/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -16,6 +14,8 @@
         type="text/css" />
     <script src="../script/jquery.min.js"></script>
     <script src="../script/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="../style/reset.css">
+    <link rel="stylesheet" href="../style/style.css">
 </head>
 
 <body>
@@ -60,32 +60,86 @@
                     <fieldset>
                         <div class="input-container-cadastro">
                             <label for="name">Nome:</label>
-                            <input type="text" name="name" id="name-input-cadastro" autocomplete="off"
+                            <input type="text" name="name" id="name-input-cadastro" autocomplete="off" required
                                 placeholder="Nome completo">
+                            <span class="helperForm" id="ValidNome">
+                                <i class="fas fa-circle-exclamation"></i>
+                                Insira seu nome completo
+                            </span>
                         </div>
                         <div class="input-container-cadastro">
                             <label for="email">E-mail:</label>
-                            <input type="text" name="email" id="email-input-cadastro" autocomplete="off"
+                            <input type="text" name="email" id="email-input-cadastro" autocomplete="off" required
                                 placeholder="email@email.com">
+                            <span class="helperForm" id="ValidEmail">
+                                <i class="fas fa-circle-exclamation"></i>
+                                Insira um e-mail válido
+                            </span>
                         </div>
                         <div class="input-container-cadastro">
                             <label for="user"></i>Usuário:</label>
-                            <input type="text" name="user" id="user-input-cadastro" autocomplete="off"
+                            <input type="text" name="user" id="user-input-cadastro" autocomplete="off" required
                                 placeholder="Nome de usuário">
+                            <span class="helperForm" id="ValidUser">
+                                <i class="fas fa-circle-exclamation"></i>
+                                Pelo menos 5 caracteres
+                            </span>
+                            <span class="helperForm" id="ValidUserBase">
+                                <i class="fas fa-circle-exclamation"></i>
+                                usuário já está em uso
+                            </span>
                         </div>
                         <div class="input-container-cadastro">
                             <label for="password">Senha:</label>
                             <input type="password" name="password" id="password-input-cadastro" autocomplete="off"
-                                placeholder="Sua senha">
+                                required placeholder="Sua senha">
+                            <div class="valid-password-container">
+                                <h2>A senha deve atender aos seguintes requisitos:</h2>
+                                <span class="helperPassword" id="ValidLetra">
+                                    <i class="fa-solid fa-circle valid-dot" id="ValidLetraDot"></i>
+                                    <i class="fas fa-circle-exclamation valid-error" id="ValidLetraError"></i>
+                                    <i class="fa-solid fa-circle-check valid-success" id="ValidLetraSuccess"></i>
+                                    Pelo menos uma letra
+                                </span>
+                                <span class="helperPassword" id="ValidLetraMai">
+                                    <i class="fa-solid fa-circle valid-dot" id="ValidLetraMaiDot"></i>
+                                    <i class="fas fa-circle-exclamation valid-error" id="ValidLetraMaiError"></i>
+                                    <i class="fa-solid fa-circle-check valid-success" id="ValidLetraMaiSuccess"></i>
+                                    Pelo menos uma letra maiúscula
+                                </span>
+                                <span class="helperPassword" id="validNumber">
+                                    <i class="fa-solid fa-circle valid-dot" id="validNumberDot"></i>
+                                    <i class="fas fa-circle-exclamation valid-error" id="validNumberError"></i>
+                                    <i class="fa-solid fa-circle-check valid-success" id="validNumberSuccess"></i>
+                                    Pelo menos um número
+                                </span>
+                                <span class="helperPassword" id="validEspecial">
+                                    <i class="fa-solid fa-circle valid-dot" id="validEspecialDot"></i>
+                                    <i class="fas fa-circle-exclamation valid-error" id="validEspecialError"></i>
+                                    <i class="fa-solid fa-circle-check valid-success" id="validEspecialSuccess"></i>
+                                    Pelo menos uma caractere especial (ex: @!%)
+                                </span>
+                                <span class="helperPassword" id="validCaract">
+                                    <i class="fa-solid fa-circle valid-dot" id="validCaractDot"></i>
+                                    <i class="fas fa-circle-exclamation valid-error" id="validCaractError"></i>
+                                    <i class="fa-solid fa-circle-check valid-success" id="validCaractSuccess"></i>
+                                    Pelo menos 8 caracteres
+                                </span>
+                            </div>
                         </div>
                         <div class="input-container-cadastro">
                             <label for="password-confirm">Confirme a senha:</label>
                             <input type="password" name="password-confirm" id="password-confirm-input-cadastro"
-                                autocomplete="off" placeholder="Confirme a senha">
+                                autocomplete="off" required placeholder="Confirme a senha" disabled>
+                            <span class="helperForm" id="ValidPasswordConfirm">
+                                <i class="fas fa-circle-exclamation"></i>
+                                Senhas não são iguais
+                            </span>
                         </div>
                     </fieldset>
                     <button type="button" class="button-form-cadastro" id="button-cancel-cadastro">Cancelar</button>
-                    <button type="submit" class="button-form-cadastro" id="button-submit-cadastro">Criar conta</button>
+                    <button type="submit" class="button-form-cadastro" id="button-submit-cadastro" disabled>Criar
+                        conta</button>
                 </form>
             </div>
         </div>

@@ -121,12 +121,207 @@ function exibirNome() {
   }
 }
 
+var hasError = true;
+var hasErrorName = true;
+var hasErrorEmail = true;
+var hasErrorUser = true;
+var hasErrorPassLength = true;
+var hasErrorPassLetra = true;
+var hasErrorPassMais = true;
+var hasErrorPassNumber = true;
+var hasErrorPassCharEspecial = true;
+var hasErrorPassConfirm = true;
 
-function handleFormAction() {
-  if (accessForm === "new-login") {
-    login();
-  } else if (accessForm === "new-account") {
-    createNewAccount();
+$("#name-input-cadastro").keyup(function () {
+  validFormCadastro();
+
+  var name = $(this).val();
+  var nomeValido = /^[\wà-ü']{2,}(\s+[\wà-ü']{2,})+$/i
+
+  if (name === "" || name.length < 5 || !nomeValido.test(name)) {
+    $("#ValidNome").show();
+    hasErrorName = true;
+  } else {
+    $("#ValidNome").hide();
+    hasErrorName = false;
+  }
+});
+
+$("#email-input-cadastro").keyup(function () {
+  validFormCadastro();
+
+  var email = $(this).val();
+  var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+
+  if (email === "" || email.length < 5 || !emailReg.test(email)) {
+    $("#ValidEmail").show();
+    hasErrorEmail = true;
+  } else {
+    $("#ValidEmail").hide();
+    hasErrorEmail = false;
+  }
+});
+
+$("#user-input-cadastro").keyup(function () {
+  validFormCadastro();
+
+  var user = $(this).val();
+  var usuarioSave = JSON.parse(localStorage.getItem("usuarios"));
+
+  if (user === "" || user.length < 5) {
+    $("#ValidUser").show();
+    $("#ValidUserBase").hide();
+    hasErrorUser = true;
+  } else if (usuarioSave !== null && usuarioSave.usuarios[user]) {
+    $("#ValidUserBase").show();
+    $("#ValidUser").hide();
+    hasErrorUser = true;
+  } else {
+    $("#ValidUser").hide();
+    $("#ValidUserBase").hide()
+    hasErrorUser = false;
+  }
+});
+
+$("#password-input-cadastro")
+  .keyup(function (e) {
+    validFormCadastro();
+
+    var pswd = $(this).val();
+    console.log(hasError);
+
+    $("#validNumberDot").hide();
+    $("#ValidLetraMaiDot").hide();
+    $("#ValidLetraDot").hide();
+    $("#validCaractDot").hide();
+    $("#validEspecialDot").hide();
+
+    // valid length
+    if (pswd.length < 8) {
+      $("#validCaract").css("color", "red");
+      hasErrorPassLength = true;
+      $("#validCaractError").show();
+      $("#validCaractSuccess").hide();
+    } else {
+      $("#validCaractError").hide();
+      $("#validCaractSuccess").show();
+      $("#validCaract").css("color", "green");
+      hasErrorPassLength = false;
+    }
+    // valid letras
+    if (pswd.match(/[A-z]/)) {
+      $("#ValidLetra").css("color", "green");
+      hasErrorPassLetra = false;
+      $("#ValidLetraError").show();
+      $("#ValidLetraSuccess").hide();
+    } else {
+      $("#ValidLetraError").hide();
+      $("#ValidLetraSuccess").show();
+      $("#ValidLetra").css("color", "red");
+      hasErrorPassLetra = true;
+    }
+    // valid maiúsculas
+    if (pswd.match(/[A-Z]/)) {
+      $("#ValidLetraMai").css("color", "green");
+      hasErrorPassMais = false;
+      $("#ValidLetraMaiError").show();
+      $("#ValidLetraMaiSuccess").hide();
+    } else {
+      $("#ValidLetraMaiError").hide();
+      $("#ValidLetraMaiSuccess").show();
+      $("#ValidLetraMai").css("color", "red");
+      hasErrorPassMais = true;
+    }
+    // valid números
+    if (pswd.match(/[0-9]/)) {
+      $("#validNumber").css("color", "green");
+      hasErrorPassNumber = false;
+      $("#validNumberError").show();
+      $("#validNumberSuccess").hide();
+    } else {
+      $("#validNumberError").hide();
+      $("#validNumberSuccess").show();
+      $("#validNumber").css("color", "red");
+      hasErrorPassNumber = true;
+    }
+    // valid caracteres especiasi
+    if (pswd.match(/([~,!,@,#,$,%,^,&,*,-,_,+,=,?,>,<])/)) {
+      $("#validEspecial").css("color", "green");
+      hasErrorPassCharEspecial = false;
+      $("#validEspecialError").show();
+      $("#validEspecialSuccess").hide();
+    } else {
+      $("#validEspecialError").hide();
+      $("#validEspecialSuccess").show();
+      $("#validEspecial").css("color", "red");
+      hasErrorPassCharEspecial = true;
+    }
+
+    if (
+      !hasErrorPassLength &&
+      !hasErrorPassLetra &&
+      !hasErrorPassMais &&
+      !hasErrorPassNumber &&
+      !hasErrorPassCharEspecial
+    ) {
+      $("#password-confirm-input-cadastro").prop("disabled", false);
+    } else {
+      $("#password-confirm-input-cadastro").prop("disabled", true);
+    }
+  })
+  .keypress(function (e) {
+    if (e.keyCode === 32) {
+      e.preventDefault();
+    }
+  })
+  .focus(function () {
+    $(".valid-password-container").show();
+  })
+  .blur(function () {
+    if (
+      !hasErrorPassLength &&
+      !hasErrorPassLetra &&
+      !hasErrorPassMais &&
+      !hasErrorPassNumber &&
+      !hasErrorPassCharEspecial
+    ) {
+      $(".valid-password-container").hide();
+      $("#password-confirm-input-cadastro").prop("disabled", false);
+    } else {
+      $("#password-confirm-input-cadastro").prop("disabled", true);
+    }
+  });
+
+$("#password-confirm-input-cadastro").keyup(function () {
+  validFormCadastro();
+  var pswdConfirm = $(this).val();
+  var pswd = $("#password-input-cadastro").val();
+
+  if (pswd !== pswdConfirm) {
+    $("#ValidPasswordConfirm").show();
+    hasErrorPassConfirm = true;
+  } else {
+    $("#ValidPasswordConfirm").hide();
+    hasErrorPassConfirm = false;
+  }
+});
+
+function validFormCadastro() {
+  if (
+    !hasErrorName &&
+    !hasErrorEmail &&
+    !hasErrorUser &&
+    !hasErrorPassLength &&
+    !hasErrorPassLetra &&
+    !hasErrorPassMais &&
+    !hasErrorPassNumber &&
+    !hasErrorPassCharEspecial &&
+    !hasErrorPassConfirm
+  ) {
+    hasError = false;
+    $("#button-submit-cadastro").prop("disabled", false);
+  } else {
+    $("#button-submit-cadastro").prop("disabled", true);
   }
 }
 
@@ -135,96 +330,39 @@ function createNewAccount() {
   var email = $("#email-input-cadastro").val();
   var user = $("#user-input-cadastro").val();
   var password = $("#password-input-cadastro").val();
-  var passwordConfirm = $("#password-confirm-input-cadastro").val();
-  var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
   var usuarioSave = JSON.parse(localStorage.getItem("usuarios"));
 
   name = titleCase(name);
 
-  if (usuarioSave !== null && usuarioSave.usuarios.user) {
-    swal({
-      title: "Erro!",
-      text: "Usuário indisponível.",
-      icon: "error",
-      button: "OK",
-    });
-  } else if (name === "") {
-    swal({
-      title: "Erro!",
-      text: "Preencha o campo nome.",
-      icon: "error",
-      button: "OK",
-    });
-  } else if (email === "") {
-    swal({
-      title: "Erro!",
-      text: "Preencha o campo e-mail.",
-      icon: "error",
-      button: "OK",
-    });
-  } else if (!emailReg.test(email)) {
-    swal({
-      title: "Erro!",
-      text: "Insira um email válido.",
-      icon: "error",
-      button: "OK",
-    });
-  } else if (user === "") {
-    swal({
-      title: "Erro!",
-      text: "Preencha o campo usuário.",
-      icon: "error",
-      button: "OK",
-    });
-  } else if (password === "") {
-    swal({
-      title: "Erro!",
-      text: "Preencha o campo senha.",
-      icon: "error",
-      button: "OK",
-    });
-  } else if (password !== passwordConfirm) {
-    swal({
-      title: "Erro!",
-      text: "Senhas diferentes",
-      icon: "error",
-      button: "OK",
-    });
+  var usuario = {
+    nome: name,
+    email: email,
+    usuario: user,
+    senha: password,
+  };
+
+  var usuarios = { usuarios: {} };
+
+  if (usuarioSave) {
+    usuarioSave.usuarios[user] = usuario;
+    localStorage.setItem("usuarios", JSON.stringify(usuarioSave));
   } else {
-    var usuario = {
-      nome: name,
-      email: email,
-      usuario: user,
-      senha: password,
-    };
-
-    var usuarios = { usuarios: {} };
-
-    if (usuarioSave) {
-      usuarioSave.usuarios[user] = usuario;
-      localStorage.setItem("usuarios", JSON.stringify(usuarioSave));
-    } else {
-      usuarios.usuarios[user] = usuario;
-      localStorage.setItem("usuarios", JSON.stringify(usuarios));
-    }
-
-    swal({
-      title: "Tudo certo!",
-      text: "Conta criada com sucesso!",
-      icon: "success",
-      buttons: false,
-      timer: 3000,
-      closeOnClickOutside: false,
-      closeOnEsc: false,
-    });
-    setTimeout(function () {
-      $("#user-input").val("");
-      $("#password-input").val("");
-      $(".container-formulario").css("display", "block");
-      accessForm = "new-login";
-      showFormOptions();
-    }, "3000");
+    usuarios.usuarios[user] = usuario;
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
   }
+
+  swal({
+    title: "Tudo certo!",
+    text: "Conta criada com sucesso!",
+    icon: "success",
+    buttons: false,
+    timer: 3000,
+    closeOnClickOutside: false,
+    closeOnEsc: false,
+  });
+  setTimeout(function () {
+    window.location.replace("../");
+  }, "3000");
 }
 
 $("#button-submit-cadastro").on("click", function (e) {
