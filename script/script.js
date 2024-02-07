@@ -4,40 +4,44 @@
   carouselSlide();
 })();
 
-$(document).ready(function() {
+$(document).ready(function () {
   carouselItens();
-})
+});
 
 function carouselSlide() {
-  var slids = $(".slider [type=radio]"); // busca os radios na div
-  var slids_len = slids.length; // conta o número de radios
-  var intervalo = 5; // intervalo em segundos
+  var pageSelect = $(".page-select").text();
 
-  function rodar() {
-    var slids_ativo = $(".slider [type=radio]:checked")
-      .attr("id")
-      .match(/\d+/)[0]; // pega o valor numérico do id do radio checado
+  if (pageSelect === "inicio") {
+    var slids = $(".slider [type=radio]"); // busca os radios na div
+    var slids_len = slids.length; // conta o número de radios
+    var intervalo = 5; // intervalo em segundos
 
-    if (slids_ativo == slids_len) slids_ativo = 0; // se estiver no último slide, volta pro primeiro
+    function rodar() {
+      var slids_ativo = $(".slider [type=radio]:checked")
+        .attr("id")
+        .match(/\d+/)[0]; // pega o valor numérico do id do radio checado
 
-    slids.eq(slids_ativo).prop("checked", true); // checa o radio da vez
-  }
+      if (slids_ativo == slids_len) slids_ativo = 0; // se estiver no último slide, volta pro primeiro
 
-  var tempo = setInterval(rodar, intervalo * 1000); // inicia o temporizador
-
-  $(".slider").hover(
-    function () {
-      // função quando entra o mouse
-      clearInterval(tempo); // cancela o temporizador
-    },
-    function () {
-      // função quando retira o mouse
-      tempo = setInterval(rodar, intervalo * 1000); // reinicia o temporizador
+      slids.eq(slids_ativo).prop("checked", true); // checa o radio da vez
     }
-  );
+
+    var tempo = setInterval(rodar, intervalo * 1000); // inicia o temporizador
+
+    $(".slider").hover(
+      function () {
+        // função quando entra o mouse
+        clearInterval(tempo); // cancela o temporizador
+      },
+      function () {
+        // função quando retira o mouse
+        tempo = setInterval(rodar, intervalo * 1000); // reinicia o temporizador
+      }
+    );
+  }
 }
 
-var countCarousel = 0
+var countCarousel = 0;
 
 function carouselItens() {
   var itensInfo = $(".itens-info");
@@ -46,13 +50,13 @@ function carouselItens() {
       return;
     } else {
       if (countCarousel == itensInfo.length) {
-        countCarousel = 0
+        countCarousel = 0;
       }
       itensInfo.each(function () {
         $(this).hide();
       });
       $(itensInfo[countCarousel]).show();
-      countCarousel++
+      countCarousel++;
       setTimeout(rand, 3000);
     }
   };
@@ -64,7 +68,6 @@ function carouselItens() {
 }
 
 var count = 0;
-var accessForm = "";
 
 function titleCase(str) {
   var splitStr = str.toLowerCase().split(" ");
@@ -118,19 +121,6 @@ function exibirNome() {
   }
 }
 
-function showFormOptions() {
-  if (accessForm === "new-login") {
-    $(".new-account").css("display", "none");
-    $(".new-login").css("display", "block");
-    $(".icon-label").css("display", "inline-block");
-    $("#button-submit").text("Login");
-  } else if (accessForm === "new-account") {
-    $(".new-login").css("display", "none");
-    $(".icon-label").css("display", "none");
-    $(".new-account").css("display", "block");
-    $("#button-submit").text("Criar conta");
-  }
-}
 
 function handleFormAction() {
   if (accessForm === "new-login") {
@@ -141,11 +131,11 @@ function handleFormAction() {
 }
 
 function createNewAccount() {
-  var name = $("#name-input").val();
-  var email = $("#email-input").val();
-  var user = $("#user-input").val();
-  var password = $("#password-input").val();
-  var passwordConfirm = $("#password-confirm-input").val();
+  var name = $("#name-input-cadastro").val();
+  var email = $("#email-input-cadastro").val();
+  var user = $("#user-input-cadastro").val();
+  var password = $("#password-input-cadastro").val();
+  var passwordConfirm = $("#password-confirm-input-cadastro").val();
   var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
   var usuarioSave = JSON.parse(localStorage.getItem("usuarios"));
 
@@ -237,9 +227,14 @@ function createNewAccount() {
   }
 }
 
+$("#button-submit-cadastro").on("click", function (e) {
+  e.preventDefault();
+  createNewAccount();
+});
+
 function login() {
-  var userInput = $("#user-input").val();
-  var passwordInput = $("#password-input").val();
+  var userInput = $("#user-input-login").val();
+  var passwordInput = $("#password-input-login").val();
   var usuarios = JSON.parse(localStorage.getItem("usuarios"));
 
   var usuarioLog = "";
@@ -281,6 +276,11 @@ function login() {
   }
 }
 
+$("#button-submit-login").on("click", function (e) {
+  e.preventDefault();
+  createNewAccount();
+});
+
 $(".menu-icon").on("click", function () {
   if (count === 0) {
     $(".sub-menu").css("display", "block");
@@ -293,14 +293,6 @@ $(".menu-icon").on("click", function () {
 
 $("#accessLogin").on("click", function () {
   $(".container-formulario").css("display", "block");
-  accessForm = "new-login";
-  showFormOptions();
-});
-
-$("#accessNewAccount").on("click", function () {
-  $(".container-formulario").css("display", "block");
-  accessForm = "new-account";
-  showFormOptions();
 });
 
 $("#accessLogout").on("click", function () {
@@ -319,11 +311,6 @@ $("#accessLogout").on("click", function () {
   }, "3000");
 });
 
-$("#button-submit").on("click", function (e) {
-  e.preventDefault();
-  handleFormAction();
-});
-
-$("#button-cancel").on("click", function () {
-  window.location.reload();
+$("#button-cancel-cadastro").on("click", function () {
+  window.location.replace("../");
 });

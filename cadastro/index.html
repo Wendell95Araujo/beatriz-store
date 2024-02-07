@@ -4,18 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beatriz Store</title>
-    <link rel="shortcut icon" href="img/logo-shortcut.png">
-    <link rel="stylesheet" href="style/reset.css">
-    <link rel="stylesheet" href="style/style.css">
+    <title>Cadastro</title>
+    <link rel="shortcut icon" href="../img/logo-shortcut.png">
+    <link rel="stylesheet" href="../style/reset.css">
+    <link rel="stylesheet" href="../style/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/480d2553e7.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" rel="stylesheet"
         type="text/css" />
-    <script src="script/jquery.min.js"></script>
-    <script src="script/sweetalert.min.js"></script>
+    <script src="../script/jquery.min.js"></script>
+    <script src="../script/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -23,7 +23,7 @@
         <div class="caixa-header">
             <marquee direction="">Compre agora e economize! Descontos exclusivos para compras online!</marquee>
             <div class="container-logo">
-                <h1><img src="img/logo-transparent.png" alt="logoBeatrizStore"></h1>
+                <h1><img src="../img/logo-transparent.png" alt="logoBeatrizStore"></h1>
             </div>
             <div class="container-name">
                 <span class="nome-boas-vindas"></span>
@@ -40,12 +40,9 @@
                     <div class="sub-menu">
                         <ul>
                             <li class="user-off" id="accessLogin"><i class="far fa-sign-in"></i>Login</li>
-                            <li class="user-off" id="accessNewAccount"><i class="far fa-user-plus"></i>
-                                <a href="cadastro/">Criar conta</a>
-                            </li>
-                            <li class="user-on" id="accessMyAccount"><i class="far fa-user"></i>
-                                <a href="minha-conta/">Minha conta</a>
-                            </li>
+                            <li class="user-off" id="accessNewAccount"><i class="far fa-user-plus"></i>Criar conta</li>
+                            <li class="user-on" id="accessMyAccount"><i class="far fa-user"></i><a
+                                    href="minha-conta/index.html">Minha conta</a></li>
                             <li class="user-on" id="accessLogout"><i class="far fa-arrow-right-from-bracket"></i>Sair
                             </li>
                         </ul>
@@ -55,72 +52,43 @@
         </div>
     </header>
     <main>
-        <div class="conteudo">
-            <p class="page-select">inicio</p>
-            <div class="slider-container">
-                <ul class="slider">
-                    <li>
-                        <input type="radio" id="slide1" name="slide" checked>
-                        <label for="slide1"></label>
-                        <img src="img/banner1.png" />
-                    </li>
-                    <li>
-                        <input type="radio" id="slide2" name="slide">
-                        <label for="slide2"></label>
-                        <img src="img/banner2.png" />
-                    </li>
-                    <li>
-                        <input type="radio" id="slide3" name="slide">
-                        <label for="slide3"></label>
-                        <img src="img/banner3.png" />
-                    </li>
-                </ul>
-            </div>
-            <div class="info-site">
-                <div class="itens-info">
-                    <i class="far fa-truck"></i>
-                    <h3>Frete grátis</h3>
-                    <span>para compras acima de R$200,00</span>
-                </div>
-                <div class="itens-info onMobile">
-                    <i class="far fa-credit-card"></i>
-                    <h3>Parcele em até 6x sem juros*</h3>
-                    <span>para compras acima de R$120,00</span>
-                </div>
-                <div class="itens-info onMobile">
-                    <i class="far fa-percent"></i>
-                    <h3>5% de desconto</h3>
-                    <span>na trasferência bancária ou no PIX</span>
-                </div>
-                <div class="itens-info onMobile">
-                    <i class="far fa-shield-check"></i>
-                    <h3>Garantia de troca e devolução.</h3>
-                    <span>Compre com tranquilidade!</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="container-formulario-login">
-            <div class="formulario-login">
-                <h2 class="titulo-formulario new-login">Acessar conta</h2>
+        <p class="page-select">cadastro</p>
+        <div class="container-formulario-cadastro">
+            <h2 class="titulo-formulario-cadastro">Criar uma nova conta</h2>
+            <div class="formulario-cadastro">
                 <form>
                     <fieldset>
-                        <label for="user">Usuário:</label>
-                        <div class="input-container-form-login">
-                            <i class="far fa-user"></i>
-                            <input type="text" name="user" id="user-input-login" placeholder="Nome de usuário">
+                        <div class="input-container-cadastro">
+                            <label for="name">Nome:</label>
+                            <input type="text" name="name" id="name-input-cadastro" autocomplete="off"
+                                placeholder="Nome completo">
                         </div>
-                        <label for="password">Senha:</label>
-                        <div class="input-container">
-                            <i class="far fa-key"></i>
-                            <input type="password" name="password" id="password-input-login" placeholder="Sua senha">
+                        <div class="input-container-cadastro">
+                            <label for="email">E-mail:</label>
+                            <input type="text" name="email" id="email-input-cadastro" autocomplete="off"
+                                placeholder="email@email.com">
+                        </div>
+                        <div class="input-container-cadastro">
+                            <label for="user"></i>Usuário:</label>
+                            <input type="text" name="user" id="user-input-cadastro" autocomplete="off"
+                                placeholder="Nome de usuário">
+                        </div>
+                        <div class="input-container-cadastro">
+                            <label for="password">Senha:</label>
+                            <input type="password" name="password" id="password-input-cadastro" autocomplete="off"
+                                placeholder="Sua senha">
+                        </div>
+                        <div class="input-container-cadastro">
+                            <label for="password-confirm">Confirme a senha:</label>
+                            <input type="password" name="password-confirm" id="password-confirm-input-cadastro"
+                                autocomplete="off" placeholder="Confirme a senha">
                         </div>
                     </fieldset>
-                    <button type="submit" class="button-form" id="button-submit-login">Login</button>
+                    <button type="button" class="button-form-cadastro" id="button-cancel-cadastro">Cancelar</button>
+                    <button type="submit" class="button-form-cadastro" id="button-submit-cadastro">Criar conta</button>
                 </form>
             </div>
         </div>
-
     </main>
     <footer class="footer-container">
         <div class="footer-content-1">
@@ -130,7 +98,7 @@
                 <a href="#">Saiba mais</a>
                 <a href="#">Contato</a>
             </p>
-            <img src="img/logo-footer-transparent.png" alt="logoBeatrizStore">
+            <img src="../img/logo-footer-transparent.png" alt="logoBeatrizStore">
             <div class="footer-text-empresa">
                 <h3>Beatriz Store</h3>
                 <p class="footer-empresa">
@@ -173,7 +141,7 @@
             <p>©Copyright Beatriz Store ltda. Todos os direitos reservados.</p>
         </div>
     </footer>
-    <script type="text/javascript" src="script/script.js"></script>
+    <script type="text/javascript" src="../script/script.js"></script>
 </body>
 
 </html>
