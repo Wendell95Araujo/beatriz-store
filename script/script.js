@@ -125,6 +125,9 @@ var hasError = true;
 var hasErrorName = true;
 var hasErrorEmail = true;
 var hasErrorUser = true;
+var hasErrorUserLenght = true;
+var hasErrorUserDuplicate = true;
+var hasErrorPass = true;
 var hasErrorPassLength = true;
 var hasErrorPassLetra = true;
 var hasErrorPassMais = true;
@@ -132,64 +135,106 @@ var hasErrorPassNumber = true;
 var hasErrorPassCharEspecial = true;
 var hasErrorPassConfirm = true;
 
-$("#name-input-cadastro").keyup(function () {
-  validFormCadastro();
+$("#name-input-cadastro")
+  .keyup(function () {
+    var name = $(this).val();
+    var nomeValido = /^[\wà-ü']{2,}(\s+[\wà-ü']{2,})+$/i;
 
-  var name = $(this).val();
-  var nomeValido = /^[\wà-ü']{2,}(\s+[\wà-ü']{2,})+$/i
+    if (name === "" || name.length < 5 || !nomeValido.test(name)) {
+      $("#ValidNome").show();
+      hasErrorName = true;
+      $(this).css("border-color", "red");
+    } else {
+      $("#ValidNome").hide();
+      hasErrorName = false;
+      $(this).css("border-color", "black");
+    }
+  })
+  .focus(function () {
+    $("#button-submit-cadastro").prop("disabled", false);
+  })
+  .blur(function () {
+    if (hasErrorName) {
+      $(this).css("border-color", "red");
+      $("#ValidNome").show();
+    } else {
+      $(this).css("border-color", "gray");
+      $("#ValidNome").hide();
+    }
+  });
 
-  if (name === "" || name.length < 5 || !nomeValido.test(name)) {
-    $("#ValidNome").show();
-    hasErrorName = true;
-  } else {
-    $("#ValidNome").hide();
-    hasErrorName = false;
-  }
-});
+$("#email-input-cadastro")
+  .keyup(function () {
+    var email = $(this).val();
+    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
 
-$("#email-input-cadastro").keyup(function () {
-  validFormCadastro();
+    if (email === "" || email.length < 5 || !emailReg.test(email)) {
+      $("#ValidEmail").show();
+      hasErrorEmail = true;
+      $(this).css("border-color", "red");
+    } else {
+      $("#ValidEmail").hide();
+      hasErrorEmail = false;
+      $(this).css("border-color", "black");
+    }
+  })
+  .blur(function () {
+    if (hasErrorEmail) {
+      $(this).css("border-color", "red");
+      $("#ValidEmail").show();
+    } else {
+      $(this).css("border-color", "gray");
+      $("#ValidEmail").hide();
+    }
+  });
 
-  var email = $(this).val();
-  var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+$("#user-input-cadastro")
+  .keyup(function () {
+    var user = $(this).val();
+    var usuarioSave = JSON.parse(localStorage.getItem("usuarios"));
 
-  if (email === "" || email.length < 5 || !emailReg.test(email)) {
-    $("#ValidEmail").show();
-    hasErrorEmail = true;
-  } else {
-    $("#ValidEmail").hide();
-    hasErrorEmail = false;
-  }
-});
-
-$("#user-input-cadastro").keyup(function () {
-  validFormCadastro();
-
-  var user = $(this).val();
-  var usuarioSave = JSON.parse(localStorage.getItem("usuarios"));
-
-  if (user === "" || user.length < 5) {
-    $("#ValidUser").show();
-    $("#ValidUserBase").hide();
-    hasErrorUser = true;
-  } else if (usuarioSave !== null && usuarioSave.usuarios[user]) {
-    $("#ValidUserBase").show();
-    $("#ValidUser").hide();
-    hasErrorUser = true;
-  } else {
-    $("#ValidUser").hide();
-    $("#ValidUserBase").hide()
-    hasErrorUser = false;
-  }
-});
+    if (user === "" || user.length < 5) {
+      $("#ValidUser").show();
+      $("#ValidUserBase").hide();
+      hasErrorUser = true;
+      hasErrorUserLenght = true;
+      hasErrorUserDuplicate = false;
+      $(this).css("border-color", "red");
+    } else if (usuarioSave !== null && usuarioSave.usuarios[user]) {
+      $("#ValidUserBase").show();
+      $("#ValidUser").hide();
+      hasErrorUser = true;
+      hasErrorUserDuplicate = true;
+      hasErrorUserLenght = false;
+      $(this).css("border-color", "red");
+    } else {
+      $("#ValidUser").hide();
+      $("#ValidUserBase").hide();
+      hasErrorUser = false;
+      hasErrorUserLenght = false;
+      hasErrorUserDuplicate = false;
+      $(this).css("border-color", "black");
+    }
+  })
+  .blur(function () {
+    if (hasErrorUser) {
+      $(this).css("border-color", "red");
+      if (hasErrorUserLenght) {
+        $("#ValidUser").show();
+      } else if (hasErrorUserDuplicate) {
+        $("#ValidUserBase").show();
+      }
+    } else {
+      $(this).css("border-color", "gray");
+      $("#ValidUser").hide();
+      $("#ValidUserBase").hide();
+    }
+  });
 
 $("#password-input-cadastro")
   .keyup(function (e) {
-    validFormCadastro();
-
     var pswd = $(this).val();
-    console.log(hasError);
-
+    
     $("#validNumberDot").hide();
     $("#ValidLetraMaiDot").hide();
     $("#ValidLetraDot").hide();
@@ -264,9 +309,11 @@ $("#password-input-cadastro")
       !hasErrorPassNumber &&
       !hasErrorPassCharEspecial
     ) {
-      $("#password-confirm-input-cadastro").prop("disabled", false);
+      $(this).css("border-color", "black");
+      hasErrorPass = false;
     } else {
-      $("#password-confirm-input-cadastro").prop("disabled", true);
+      $(this).css("border-color", "red");
+      hasErrorPass = true;
     }
   })
   .keypress(function (e) {
@@ -286,46 +333,93 @@ $("#password-input-cadastro")
       !hasErrorPassCharEspecial
     ) {
       $(".valid-password-container").hide();
-      $("#password-confirm-input-cadastro").prop("disabled", false);
+      $(this).css("border-color", "gray");
     } else {
-      $("#password-confirm-input-cadastro").prop("disabled", true);
+      $(this).css("border-color", "red");
     }
   });
 
-$("#password-confirm-input-cadastro").keyup(function () {
-  validFormCadastro();
-  var pswdConfirm = $(this).val();
-  var pswd = $("#password-input-cadastro").val();
+$("#password-confirm-input-cadastro")
+  .keyup(function () {
+    var pswdConfirm = $(this).val();
+    var pswd = $("#password-input-cadastro").val();
 
-  if (pswd !== pswdConfirm) {
-    $("#ValidPasswordConfirm").show();
-    hasErrorPassConfirm = true;
-  } else {
-    $("#ValidPasswordConfirm").hide();
-    hasErrorPassConfirm = false;
-  }
-});
+    if (pswd !== pswdConfirm) {
+      $("#ValidPasswordConfirm").show();
+      hasErrorPassConfirm = true;
+      $(this).css("border-color", "red");
+    } else {
+      $("#ValidPasswordConfirm").hide();
+      hasErrorPassConfirm = false;
+      $(this).css("border-color", "black");
+    }
+  })
+  .blur(function () {
+    if (hasErrorPass) {
+      $(this).css("border-color", "red");
+      $("#ValidPasswordConfirmRequisitos").show();
+      $("#ValidPasswordConfirm").hide();
+    } else if (hasErrorPassConfirm) {
+      $(this).css("border-color", "red");
+      $("#ValidPasswordConfirm").show();
+      $("#ValidPasswordConfirmRequisitos").hide();
+    } else {
+      $(this).css("border-color", "gray");
+      $("#ValidPasswordConfirm").hide();
+      $("#ValidPasswordConfirmRequisitos").hide();
+    }
+  })
+  .focus(function () {
+    if (hasErrorPass) {
+      $(this).css("border-color", "red");
+      $("#ValidPasswordConfirmRequisitos").show();
+      $("#ValidPasswordConfirm").hide();
+    }
+  });
 
 function validFormCadastro() {
-  if (
+  if (hasErrorName) {
+    $("#name-input-cadastro").focus();
+    $("#name-input-cadastro").css("border-color", "red");
+    $("#ValidNome").show();
+    hasError = true;
+    return false;
+  } else if (hasErrorEmail) {
+    $("#email-input-cadastro").focus();
+    $("#email-input-cadastro").css("border-color", "red");
+    $("#ValidEmail").show();
+    hasError = true;
+    return false;
+  } else if (hasErrorUser) {
+    $("#user-input-cadastro").focus();
+    hasError = true;
+    return false;
+  } else if (hasErrorPass) {
+    $("#password-input-cadastro").focus();
+    hasError = true;
+    return false;
+  } else if (hasErrorPassConfirm) {
+    $("#password-confirm-input-cadastro").focus();
+    hasError = true;
+    return false;
+  } else if (
     !hasErrorName &&
     !hasErrorEmail &&
     !hasErrorUser &&
-    !hasErrorPassLength &&
-    !hasErrorPassLetra &&
-    !hasErrorPassMais &&
-    !hasErrorPassNumber &&
-    !hasErrorPassCharEspecial &&
+    !hasErrorPass &&
     !hasErrorPassConfirm
   ) {
     hasError = false;
-    $("#button-submit-cadastro").prop("disabled", false);
+    return true;
   } else {
-    $("#button-submit-cadastro").prop("disabled", true);
   }
 }
 
 function createNewAccount() {
+  if (!validFormCadastro()) {
+    return;
+  }
+
   var name = $("#name-input-cadastro").val();
   var email = $("#email-input-cadastro").val();
   var user = $("#user-input-cadastro").val();

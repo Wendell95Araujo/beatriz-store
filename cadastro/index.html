@@ -54,10 +54,10 @@
     <main>
         <p class="page-select">cadastro</p>
         <div class="container-formulario-cadastro">
-            <h2 class="titulo-formulario-cadastro">Criar uma nova conta</h2>
             <div class="formulario-cadastro">
+                <h2 class="titulo-formulario-cadastro">Criar uma nova conta</h2>
                 <form>
-                    <fieldset>
+                    <fieldset class="campos-form">
                         <div class="input-container-cadastro">
                             <label for="name">Nome:</label>
                             <input type="text" name="name" id="name-input-cadastro" autocomplete="off" required
@@ -130,10 +130,14 @@
                         <div class="input-container-cadastro">
                             <label for="password-confirm">Confirme a senha:</label>
                             <input type="password" name="password-confirm" id="password-confirm-input-cadastro"
-                                autocomplete="off" required placeholder="Confirme a senha" disabled>
+                                autocomplete="off" required placeholder="Confirme a senha">
                             <span class="helperForm" id="ValidPasswordConfirm">
                                 <i class="fas fa-circle-exclamation"></i>
                                 Senhas não são iguais
+                            </span>
+                            <span class="helperForm" id="ValidPasswordConfirmRequisitos">
+                                <i class="fas fa-circle-exclamation"></i>
+                                Senha inválida
                             </span>
                         </div>
                     </fieldset>

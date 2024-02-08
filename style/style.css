@@ -204,7 +204,7 @@ marquee {
 
 /*fomrulário Cadastro*/
 .container-formulario-cadastro {
-  background-color: white;
+  background-color: lightpink;
   width: 100%;
   display: block;
   text-align: center;
@@ -214,32 +214,31 @@ marquee {
 .titulo-formulario-cadastro {
   font-size: 30px;
   font-weight: bold;
-  color: lightcoral;
-  padding-bottom: 20px;
+  color: black;;
+  margin-top: 30px;
   text-align: center;
 }
 
 .formulario-cadastro {
-  width: 800px;
-  padding: 0 20px;
-  margin: 0 auto;
-  border: solid 3px lightcoral;
-  border-radius: 30px;
+  width: 500px;
+  padding: 20px;
+  margin: 0 auto 40px;
   font-size: 22px;
   text-align: center;
-  background-color: lightgray;
+  background-color: white;
+  box-shadow: 0px 0px 20px 5px #00000055;
+  border-radius: 5px;
+}
+
+.campos-form {
+  margin: 30px auto 50px;
 }
 
 .input-container-cadastro {
   display: block;
   margin: 40px auto;
-  color: lightcoral;
+  color: black;
   text-align: center;
-}
-
-.icon-label {
-  display: inline-block;
-  margin-right: 10px;
 }
 
 .input-container-cadastro label {
@@ -255,22 +254,21 @@ marquee {
   margin: 0 auto;
   font-size: 20px;
   padding: 10px 20px;
-  border: solid 3px lightcoral;
-  border-radius: 20px;
+  border: solid 2px gray;
+  border-radius: 5px;
   text-align: center;
-  color: lightcoral;
+  color: black;
   background-color: white;
   display: block;
 }
 
 .input-container-cadastro input::placeholder {
-  color: lightcoral;
+  color: black;
   opacity: 0.5;
 }
 
 .input-container-cadastro input:focus-visible {
-  background-color: lightcoral;
-  color: white;
+  border: solid 2px black;
   outline: none;
 }
 
@@ -285,7 +283,7 @@ marquee {
 
 .button-form-cadastro {
   border: none;
-  border-radius: 20px;
+  border-radius: 10px;
   font-size: 25px;
   padding: 10px 20px;
   cursor: pointer;
@@ -304,15 +302,15 @@ marquee {
 }
 
 #button-submit-cadastro:disabled {
-  border: solid 3px darkgray !important;
-  background-color: darkgray !important;
+  border: solid 3px lightgray !important;
+  background-color: lightgray !important;
   cursor: default !important;
 }
 
 #button-cancel-cadastro {
-  background-color: white;
-  border: solid 3px white;
-  color: lightcoral;
+  background-color: whitesmoke;
+  border: solid 3px whitesmoke;
+  color: black;
 }
 
 .helperForm {
@@ -327,8 +325,7 @@ marquee {
   background: white;
   font-size: 0.875em;
   border-radius: 5px;
-  box-shadow: 0 1px 3px lightcoral;
-  border: 1px solid lightcoral;
+  box-shadow: 0 1px 3px #00000055;
   display: none;
 }
 
