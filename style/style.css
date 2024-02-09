@@ -211,14 +211,6 @@ marquee {
   padding: 20px 0 30px;
 }
 
-.titulo-formulario-cadastro {
-  font-size: 30px;
-  font-weight: bold;
-  color: black;;
-  margin-top: 30px;
-  text-align: center;
-}
-
 .formulario-cadastro {
   width: 500px;
   padding: 20px;
@@ -230,25 +222,33 @@ marquee {
   border-radius: 5px;
 }
 
+.titulo-formulario-cadastro {
+  font-size: 30px;
+  font-weight: bold;
+  color: black;
+  margin-top: 30px;
+  text-align: center;
+}
+
 .campos-form {
   margin: 30px auto 50px;
 }
 
 .input-container-cadastro {
   display: block;
-  margin: 40px auto;
+  margin: 10px auto;
   color: black;
   text-align: center;
 }
 
-.input-container-cadastro label {
-  display: block;
-  margin-bottom: 10px;
+.label-cadastro {
+  opacity: 0;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 12px;
+  transition: opacity 1s;
 }
 
-.input-container-cadastro input {
+.input-cadastro {
   width: 300px;
   height: 25px;
   margin: 0 auto;
@@ -262,13 +262,12 @@ marquee {
   display: block;
 }
 
-.input-container-cadastro input::placeholder {
+.input-cadastro::placeholder {
   color: black;
   opacity: 0.5;
 }
 
-.input-container-cadastro input:focus-visible {
-  border: solid 2px black;
+.input-cadastro:focus-visible {
   outline: none;
 }
 
@@ -554,7 +553,7 @@ marquee {
     margin-top: 5px;
   }
 
-  .input-container-cadastro input {
+  .input-cadastro {
     width: 80%;
   }
 

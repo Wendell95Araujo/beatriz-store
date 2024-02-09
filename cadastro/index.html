@@ -58,28 +58,28 @@
                 <h2 class="titulo-formulario-cadastro">Criar uma nova conta</h2>
                 <form>
                     <fieldset class="campos-form">
-                        <div class="input-container-cadastro">
-                            <label for="name">Nome:</label>
-                            <input type="text" name="name" id="name-input-cadastro" autocomplete="off" required
-                                placeholder="Nome completo">
+                        <div class="input-container-cadastro container-nome">
+                            <label class="label-cadastro label-nome-cadastro" for="name">Nome completo:</label>
+                            <input class="input-cadastro input-nome-cadastro" type="text" name="name"
+                                id="name-input-cadastro" autocomplete="off" required placeholder="Nome completo:">
                             <span class="helperForm" id="ValidNome">
                                 <i class="fas fa-circle-exclamation"></i>
                                 Insira seu nome completo
                             </span>
                         </div>
-                        <div class="input-container-cadastro">
-                            <label for="email">E-mail:</label>
-                            <input type="text" name="email" id="email-input-cadastro" autocomplete="off" required
-                                placeholder="email@email.com">
+                        <div class="input-container-cadastro container-email">
+                            <label class="label-cadastro label-email-cadastro" for="email">E-mail:</label>
+                            <input class="input-cadastro input-email-cadastro" type="text" name="email"
+                                id="email-input-cadastro" autocomplete="off" required placeholder="E-mail:">
                             <span class="helperForm" id="ValidEmail">
                                 <i class="fas fa-circle-exclamation"></i>
                                 Insira um e-mail válido
                             </span>
                         </div>
-                        <div class="input-container-cadastro">
-                            <label for="user"></i>Usuário:</label>
-                            <input type="text" name="user" id="user-input-cadastro" autocomplete="off" required
-                                placeholder="Nome de usuário">
+                        <div class="input-container-cadastro container-user">
+                            <label class="label-cadastro label-user-cadastro" for="user"></i>Usuário:</label>
+                            <input class="input-cadastro input-user-cadastro" type="text" name="user"
+                                id="user-input-cadastro" autocomplete="off" required placeholder="Usuário:">
                             <span class="helperForm" id="ValidUser">
                                 <i class="fas fa-circle-exclamation"></i>
                                 Pelo menos 5 caracteres
@@ -89,10 +89,10 @@
                                 usuário já está em uso
                             </span>
                         </div>
-                        <div class="input-container-cadastro">
-                            <label for="password">Senha:</label>
-                            <input type="password" name="password" id="password-input-cadastro" autocomplete="off"
-                                required placeholder="Sua senha">
+                        <div class="input-container-cadastro container-senha">
+                            <label class="label-cadastro label-senha-cadastro" for="password">Crie sua senha:</label>
+                            <input class="input-cadastro input-senha-cadastro" type="password" name="password"
+                                id="password-input-cadastro" autocomplete="off" required placeholder="Crie sua senha:">
                             <div class="valid-password-container">
                                 <h2>A senha deve atender aos seguintes requisitos:</h2>
                                 <span class="helperPassword" id="ValidLetra">
@@ -127,10 +127,12 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="input-container-cadastro">
-                            <label for="password-confirm">Confirme a senha:</label>
-                            <input type="password" name="password-confirm" id="password-confirm-input-cadastro"
-                                autocomplete="off" required placeholder="Confirme a senha">
+                        <div class="input-container-cadastro container-senha-confirm">
+                            <label class="label-cadastro label-senha-confirm-cadastro" for="password-confirm">Confirme
+                                sua senha:</label>
+                            <input class="input-cadastro input-senha-confirm-cadastro" type="password"
+                                name="password-confirm" id="password-confirm-input-cadastro" autocomplete="off" required
+                                placeholder="Confirme sua senha:">
                             <span class="helperForm" id="ValidPasswordConfirm">
                                 <i class="fas fa-circle-exclamation"></i>
                                 Senhas não são iguais

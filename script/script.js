@@ -144,21 +144,33 @@ $("#name-input-cadastro")
       $("#ValidNome").show();
       hasErrorName = true;
       $(this).css("border-color", "red");
+      $(".label-nome-cadastro").css("color", "red");
     } else {
       $("#ValidNome").hide();
       hasErrorName = false;
       $(this).css("border-color", "black");
+      $(".label-nome-cadastro").css("color", "black");
     }
   })
   .focus(function () {
     $("#button-submit-cadastro").prop("disabled", false);
+    $(this).css("border-color", "black");
+    $(this).attr("placeholder", "Beatriz Araujo");
+    $(".label-nome-cadastro").css("color", "black");
+    $(".label-nome-cadastro").css("opacity", "1");
   })
   .blur(function () {
+    if ($(this).val() === "") {
+      $(".label-nome-cadastro").css("opacity", "0");
+      $(this).attr("placeholder", "Nome completo:");
+    }
     if (hasErrorName) {
       $(this).css("border-color", "red");
+      $(".label-nome-cadastro").css("color", "red");
       $("#ValidNome").show();
     } else {
       $(this).css("border-color", "gray");
+      $(".label-nome-cadastro").css("color", "gray");
       $("#ValidNome").hide();
     }
   });
@@ -172,18 +184,32 @@ $("#email-input-cadastro")
       $("#ValidEmail").show();
       hasErrorEmail = true;
       $(this).css("border-color", "red");
+      $(".label-email-cadastro").css("color", "red");
     } else {
       $("#ValidEmail").hide();
       hasErrorEmail = false;
       $(this).css("border-color", "black");
+      $(".label-email-cadastro").css("color", "black");
     }
   })
+  .focus(function () {
+    $(this).css("border-color", "black");
+    $(this).attr("placeholder", "beatrizaraujo@exemplo.com");
+    $(".label-email-cadastro").css("color", "black");
+    $(".label-email-cadastro").css("opacity", "1");
+  })
   .blur(function () {
+    if ($(this).val() === "") {
+      $(".label-email-cadastro").css("opacity", "0");
+      $(this).attr("placeholder", "E-mail:");
+    }
     if (hasErrorEmail) {
       $(this).css("border-color", "red");
+      $(".label-email-cadastro").css("color", "red");
       $("#ValidEmail").show();
     } else {
       $(this).css("border-color", "gray");
+      $(".label-email-cadastro").css("color", "gray");
       $("#ValidEmail").hide();
     }
   });
@@ -200,6 +226,7 @@ $("#user-input-cadastro")
       hasErrorUserLenght = true;
       hasErrorUserDuplicate = false;
       $(this).css("border-color", "red");
+      $(".label-user-cadastro").css("color", "red");
     } else if (usuarioSave !== null && usuarioSave.usuarios[user]) {
       $("#ValidUserBase").show();
       $("#ValidUser").hide();
@@ -207,6 +234,7 @@ $("#user-input-cadastro")
       hasErrorUserDuplicate = true;
       hasErrorUserLenght = false;
       $(this).css("border-color", "red");
+      $(".label-user-cadastro").css("color", "red");
     } else {
       $("#ValidUser").hide();
       $("#ValidUserBase").hide();
@@ -214,11 +242,23 @@ $("#user-input-cadastro")
       hasErrorUserLenght = false;
       hasErrorUserDuplicate = false;
       $(this).css("border-color", "black");
+      $(".label-user-cadastro").css("color", "black");
     }
   })
+  .focus(function () {
+    $(this).css("border-color", "black");
+    $(this).attr("placeholder", "BeatrizA21");
+    $(".label-user-cadastro").css("color", "black");
+    $(".label-user-cadastro").css("opacity", "1");
+  })
   .blur(function () {
+    if ($(this).val() === "") {
+      $(".label-user-cadastro").css("opacity", "0");
+      $(this).attr("placeholder", "Usuário:");
+    }
     if (hasErrorUser) {
       $(this).css("border-color", "red");
+      $(".label-user-cadastro").css("color", "red");
       if (hasErrorUserLenght) {
         $("#ValidUser").show();
       } else if (hasErrorUserDuplicate) {
@@ -226,6 +266,7 @@ $("#user-input-cadastro")
       }
     } else {
       $(this).css("border-color", "gray");
+      $(".label-user-cadastro").css("color", "gray");
       $("#ValidUser").hide();
       $("#ValidUserBase").hide();
     }
@@ -234,12 +275,16 @@ $("#user-input-cadastro")
 $("#password-input-cadastro")
   .keyup(function (e) {
     var pswd = $(this).val();
-    
+
     $("#validNumberDot").hide();
     $("#ValidLetraMaiDot").hide();
     $("#ValidLetraDot").hide();
     $("#validCaractDot").hide();
     $("#validEspecialDot").hide();
+
+    if (pswd === "") {
+      $("#ValidPasswordVazia").show();
+    }
 
     // valid length
     if (pswd.length < 8) {
@@ -310,9 +355,11 @@ $("#password-input-cadastro")
       !hasErrorPassCharEspecial
     ) {
       $(this).css("border-color", "black");
+      $(".label-senha-cadastro").css("color", "black");
       hasErrorPass = false;
     } else {
       $(this).css("border-color", "red");
+      $(".label-senha-cadastro").css("color", "red");
       hasErrorPass = true;
     }
   })
@@ -322,9 +369,19 @@ $("#password-input-cadastro")
     }
   })
   .focus(function () {
+    var pswd = $(this).val();
+    $(this).css("border-color", "black");
+    $(".label-senha-cadastro").css("color", "black");
+    $(".label-senha-cadastro").css("opacity", "1");
+    if (pswd === "") {
+      $("#ValidPasswordVazia").show();
+    }
     $(".valid-password-container").show();
   })
   .blur(function () {
+    if ($(this).val() === "") {
+      $(".label-senha-cadastro").css("opacity", "0");
+    }
     if (
       !hasErrorPassLength &&
       !hasErrorPassLetra &&
@@ -334,8 +391,10 @@ $("#password-input-cadastro")
     ) {
       $(".valid-password-container").hide();
       $(this).css("border-color", "gray");
+      $(".label-senha-cadastro").css("color", "gray");
     } else {
       $(this).css("border-color", "red");
+      $(".label-senha-cadastro").css("color", "red");
     }
   });
 
@@ -348,23 +407,36 @@ $("#password-confirm-input-cadastro")
       $("#ValidPasswordConfirm").show();
       hasErrorPassConfirm = true;
       $(this).css("border-color", "red");
+      $(".label-senha-confirm-cadastro").css("color", "red");
     } else {
       $("#ValidPasswordConfirm").hide();
       hasErrorPassConfirm = false;
       $(this).css("border-color", "black");
+      $(".label-senha-confirm-cadastro").css("color", "black");
     }
   })
+  .focus(function () {
+    $(this).css("border-color", "black");
+    $(".label-senha-confirm-cadastro").css("color", "black");
+    $(".label-senha-confirm-cadastro").css("opacity", "1");
+  })
   .blur(function () {
+    if ($(this).val() === "") {
+      $(".label-senha-confirm-cadastro").css("opacity", "0");
+    }
     if (hasErrorPass) {
       $(this).css("border-color", "red");
+      $(".label-senha-confirm-cadastro").css("color", "red");
       $("#ValidPasswordConfirmRequisitos").show();
       $("#ValidPasswordConfirm").hide();
     } else if (hasErrorPassConfirm) {
       $(this).css("border-color", "red");
+      $(".label-senha-confirm-cadastro").css("color", "red");
       $("#ValidPasswordConfirm").show();
       $("#ValidPasswordConfirmRequisitos").hide();
     } else {
       $(this).css("border-color", "gray");
+      $(".label-senha-confirm-cadastro").css("color", "gray");
       $("#ValidPasswordConfirm").hide();
       $("#ValidPasswordConfirmRequisitos").hide();
     }
@@ -372,6 +444,7 @@ $("#password-confirm-input-cadastro")
   .focus(function () {
     if (hasErrorPass) {
       $(this).css("border-color", "red");
+      $(".label-senha-confirm-cadastro").css("color", "red");
       $("#ValidPasswordConfirmRequisitos").show();
       $("#ValidPasswordConfirm").hide();
     }
