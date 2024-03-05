@@ -105,18 +105,31 @@
                 <h2 class="titulo-formulario new-login">Acessar conta</h2>
                 <form>
                     <fieldset>
-                        <label for="user">Usuário:</label>
-                        <div class="input-container-form-login">
-                            <i class="far fa-user"></i>
-                            <input type="text" name="user" id="user-input-login" placeholder="Nome de usuário">
+                        <div class="container-form-login">
+                            <!-- <label for="user">Usuário:</label> -->
+                            <div class="input-container-form-login" id="input-container-user-login">
+                                <i class="far fa-user"></i>
+                                <input type="text" name="user" class="input-login" id="user-input-login" placeholder="Usuário">
+                            </div>
+                            <span class="helperFormLogin" id="ValidUserLogin">
+                                <i class="fas fa-circle-exclamation"></i>
+                                Este campo é obrigatório
+                            </span>
                         </div>
-                        <label for="password">Senha:</label>
-                        <div class="input-container">
-                            <i class="far fa-key"></i>
-                            <input type="password" name="password" id="password-input-login" placeholder="Sua senha">
+                        <div class="container-form-login">
+                            <!-- <label for="password">Senha:</label> -->
+                            <div class="input-container-form-login" id="input-container-senha-login">
+                                <i class="far fa-lock"></i>
+                                <input type="password" name="password" class="input-login" id="password-input-login" placeholder="Senha">
+                                <i class="far fa-eye-slash showPass"></i>
+                            </div>
+                            <span class="helperFormLogin" id="ValidSenhaLogin">
+                                <i class="fas fa-circle-exclamation"></i>
+                                Este campo é obrigatório
+                            </span>
                         </div>
                     </fieldset>
-                    <button type="submit" class="button-form" id="button-submit-login">Login</button>
+                    <button type="submit" class="button-form" id="button-submit-login">ENTRAR</button>
                 </form>
             </div>
         </div>

@@ -135,6 +135,87 @@ var hasErrorPassNumber = true;
 var hasErrorPassCharEspecial = true;
 var hasErrorPassConfirm = true;
 
+var hasErrorUserLogin = true;
+var hasErrorPassLogin = true;
+
+$("#user-input-login")
+  .keyup(function () {
+    var user = $(this).val();
+
+    if (user === "") {
+      $("#ValidUserLogin").css("display", "block");
+      hasErrorUserLogin = true;
+      $("#input-container-user-login").css("border-color", "red");
+      $("#input-container-user-login").css("color", "#e5e5e5");
+    } else {
+      $("#ValidUserLogin").css("display", "none");
+      hasErrorUserLogin = false;
+      $("#input-container-user-login").css("border-color", "#4c4c4c");
+    }
+  })
+  .focus(function () {
+    $("#input-container-user-login").css("border-color", "#4c4c4c");
+    $("#input-container-user-login").css("color", "#4c4c4c");
+    $("#user-input-login").css("color", "#4c4c4c");
+  })
+  .blur(function () {
+    if (hasErrorUserLogin) {
+      $("#input-container-user-login").css("border-color", "red");
+      $("#ValidUserLogin").css("display", "block");
+      $("#input-container-user-login").css("color", "#e5e5e5");
+    } else {
+      $("#input-container-user-login").css("border-color", "#e5e5e5");
+      $("#input-container-user-login").css("color", "#e5e5e5");
+      $("#ValidUserLogin").css("display", "none");
+    }
+  });
+
+$("#password-input-login")
+  .keyup(function () {
+    var senha = $(this).val();
+
+    if (senha === "") {
+      $("#ValidSenhaLogin").css("display", "block");
+      hasErrorSenhaLogin = true;
+      $("#input-container-senha-login").css("border-color", "red");
+      $("#input-container-senha-login").css("color", "#e5e5e5");
+    } else {
+      $("#ValidSenhaLogin").css("display", "none");
+      hasErrorSenhaLogin = false;
+      $("#input-container-senha-login").css("border-color", "#4c4c4c");
+    }
+  })
+  .focus(function () {
+    $("#input-container-senha-login").css("border-color", "#4c4c4c");
+    $("#input-container-senha-login").css("color", "#4c4c4c");
+    $("#password-input-login").css("color", "#4c4c4c");
+    $(".showPass").css("color", "#4c4c4c");
+  })
+  .blur(function () {
+    if (hasErrorSenhaLogin) {
+      $("#input-container-senha-login").css("border-color", "red");
+      $("#ValidSenhaLogin").css("display", "block");
+      $("#input-container-senha-login").css("color", "#e5e5e5");
+    } else {
+      $("#input-container-senha-login").css("border-color", "#e5e5e5");
+      $("#input-container-senha-login").css("color", "#e5e5e5");
+      $(".showPass").css("color", "#e5e5e5");
+      $("#ValidSenhaLogin").css("display", "none");
+    }
+  });
+
+$(".showPass").on("click", function () {
+  if ($(this).hasClass("fa-eye-slash")) {
+    $(this).removeClass("fa-eye-slash");
+    $(this).addClass("fa-eye");
+    $("#password-input-login").attr("type", "text");
+  } else if ($(this).hasClass("fa-eye")) {
+    $(this).removeClass("fa-eye");
+    $(this).addClass("fa-eye-slash");
+    $("#password-input-login").attr("type", "password");
+  }
+});
+
 $("#name-input-cadastro")
   .keyup(function () {
     var name = $(this).val();
@@ -169,8 +250,8 @@ $("#name-input-cadastro")
       $(".label-nome-cadastro").css("color", "red");
       $("#ValidNome").show();
     } else {
-      $(this).css("border-color", "gray");
-      $(".label-nome-cadastro").css("color", "gray");
+      $(this).css("border-color", "#e5e5e5");
+      $(".label-nome-cadastro").css("color", "#e5e5e5");
       $("#ValidNome").hide();
     }
   });
@@ -208,8 +289,8 @@ $("#email-input-cadastro")
       $(".label-email-cadastro").css("color", "red");
       $("#ValidEmail").show();
     } else {
-      $(this).css("border-color", "gray");
-      $(".label-email-cadastro").css("color", "gray");
+      $(this).css("border-color", "#e5e5e5");
+      $(".label-email-cadastro").css("color", "#e5e5e5");
       $("#ValidEmail").hide();
     }
   });
@@ -265,8 +346,8 @@ $("#user-input-cadastro")
         $("#ValidUserBase").show();
       }
     } else {
-      $(this).css("border-color", "gray");
-      $(".label-user-cadastro").css("color", "gray");
+      $(this).css("border-color", "#e5e5e5");
+      $(".label-user-cadastro").css("color", "#e5e5e5");
       $("#ValidUser").hide();
       $("#ValidUserBase").hide();
     }
@@ -390,8 +471,8 @@ $("#password-input-cadastro")
       !hasErrorPassCharEspecial
     ) {
       $(".valid-password-container").hide();
-      $(this).css("border-color", "gray");
-      $(".label-senha-cadastro").css("color", "gray");
+      $(this).css("border-color", "#e5e5e5");
+      $(".label-senha-cadastro").css("color", "#e5e5e5");
     } else {
       $(this).css("border-color", "red");
       $(".label-senha-cadastro").css("color", "red");
@@ -435,8 +516,8 @@ $("#password-confirm-input-cadastro")
       $("#ValidPasswordConfirm").show();
       $("#ValidPasswordConfirmRequisitos").hide();
     } else {
-      $(this).css("border-color", "gray");
-      $(".label-senha-confirm-cadastro").css("color", "gray");
+      $(this).css("border-color", "#e5e5e5");
+      $(".label-senha-confirm-cadastro").css("color", "#e5e5e5");
       $("#ValidPasswordConfirm").hide();
       $("#ValidPasswordConfirmRequisitos").hide();
     }
@@ -583,21 +664,34 @@ function login() {
 
 $("#button-submit-login").on("click", function (e) {
   e.preventDefault();
-  createNewAccount();
+  login();
 });
 
 $(".menu-icon").on("click", function () {
   if (count === 0) {
-    $(".sub-menu").css("display", "block");
+    $(".sub-menu").show();
     count++;
   } else {
-    $(".sub-menu").css("display", "none");
+    $(".sub-menu").hide();
     count = 0;
   }
 });
 
 $("#accessLogin").on("click", function () {
-  $(".container-formulario").css("display", "block");
+  $(".sub-menu").hide();
+  $(".container-formulario-login").show();
+});
+
+$(".container-logo").on("click", function () {
+  $(".sub-menu").hide();
+  $(".container-formulario-login").hide();
+  count = 0;
+});
+
+$(".conteudo").on("click", function () {
+  $(".sub-menu").hide();
+  $(".container-formulario-login").hide();
+  count = 0;
 });
 
 $("#accessLogout").on("click", function () {

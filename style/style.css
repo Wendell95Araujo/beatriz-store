@@ -202,6 +202,61 @@ marquee {
   font-size: 20px;
 }
 
+/*formulário login*/
+.container-formulario-login {
+  display: none;
+  padding: 20px;
+  position: absolute;
+  right: 5px;
+  top: 125px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.container-form-login {
+  display: block;
+  margin: 10px auto;
+}
+
+.input-container-form-login {
+  border: solid 1px #e5e5e5;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 10px;
+  color: #e5e5e5;
+  margin-bottom: 5px;
+  width: 230px;
+}
+
+.input-login {
+  border: none;
+}
+
+.input-login:focus-visible {
+  outline: none;
+}
+
+.showPass {
+  cursor: pointer;
+  position: relative;
+  right: -20px;
+}
+
+#button-submit-login {
+  background-color: lightcoral;
+  border: solid 1px rgb(240, 128, 128);
+  border-radius: 5px;
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  width: 250px;
+  text-align: center;
+}
+#button-submit-login:hover {
+  background-color: rgb(230, 128, 128);
+}
+
 /*fomrulário Cadastro*/
 .container-formulario-cadastro {
   background-color: lightpink;
@@ -254,7 +309,7 @@ marquee {
   margin: 0 auto;
   font-size: 20px;
   padding: 10px 20px;
-  border: solid 2px gray;
+  border: solid 1px#e5e5e5;
   border-radius: 5px;
   text-align: center;
   color: black;
@@ -292,12 +347,11 @@ marquee {
 
 #button-submit-cadastro {
   background-color: lightcoral;
-  border: solid 3px white;
   color: white;
 }
 
 #button-submit-cadastro:hover {
-  border: solid 3px lightcoral;
+  background-color: rgb(230, 128, 128);
 }
 
 #button-submit-cadastro:disabled {
@@ -312,9 +366,14 @@ marquee {
   color: black;
 }
 
-.helperForm {
+.helperForm,
+.helperFormLogin {
   display: none;
   color: red;
+}
+
+.helperFormLogin {
+  font-size: 12px;
 }
 
 .valid-password-container {
