@@ -176,12 +176,12 @@ $("#password-input-login")
 
     if (senha === "") {
       $("#ValidSenhaLogin").css("display", "block");
-      hasErrorSenhaLogin = true;
+      hasErrorPassLogin = true;
       $("#input-container-senha-login").css("border-color", "red");
       $("#input-container-senha-login").css("color", "#e5e5e5");
     } else {
       $("#ValidSenhaLogin").css("display", "none");
-      hasErrorSenhaLogin = false;
+      hasErrorPassLogin = false;
       $("#input-container-senha-login").css("border-color", "#4c4c4c");
     }
   })
@@ -192,7 +192,7 @@ $("#password-input-login")
     $(".showPass").css("color", "#4c4c4c");
   })
   .blur(function () {
-    if (hasErrorSenhaLogin) {
+    if (hasErrorPassLogin) {
       $("#input-container-senha-login").css("border-color", "red");
       $("#ValidSenhaLogin").css("display", "block");
       $("#input-container-senha-login").css("color", "#e5e5e5");
